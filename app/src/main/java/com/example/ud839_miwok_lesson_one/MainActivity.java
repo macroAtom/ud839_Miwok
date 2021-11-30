@@ -39,22 +39,19 @@ public class MainActivity extends AppCompatActivity {
         TextView numbers = (TextView) findViewById(R.id.numbers);
 
 
-        numbers.setOnClickListener(new View.OnClickListener(){
+        numbers.setOnClickListener(new View.OnClickListener() {
 
             // The code in this method will be executed when the numbers View is clicked on.
             @Override
-            public void onClick (View view) {
-//                pop up a message "open the list of numbers" when click numbers.
-//                Toast.makeText(view.getContext(),"open the list of numbers", Toast.LENGTH_SHORT).show();
-//                Intent i = new Intent(this,NumbersActivity.class);
+            public void onClick(View view) {
+            // pop up a message "open the list of numbers" when click numbers.
+            // Toast.makeText(view.getContext(),"open the list of numbers", Toast.LENGTH_SHORT).show();
+            // Intent i = new Intent(this,NumbersActivity.class);
                 Intent numbersIntent = new Intent(MainActivity.this, NumbersActivity.class);
                 startActivity(numbersIntent);
 
             }
         });
-
-
-
 
 
 //        set Family category Click listener;
@@ -64,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         family.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this,FamilyActivity.class);
+                Intent i = new Intent(MainActivity.this, FamilyActivity.class);
                 startActivity(i);
             }
         });
@@ -87,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         phrases.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this,PhrasesActivity.class);
+                Intent i = new Intent(MainActivity.this, PhrasesActivity.class);
                 startActivity(i);
             }
         });
