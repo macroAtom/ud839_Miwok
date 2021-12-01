@@ -4,6 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.GridView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -15,9 +19,14 @@ public class NumbersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numbers);
 
+        String[] wordString = new String[10];
+//
+        wordString[0] = "one";
+        wordString[1] = "two";
+        wordString[2] = "three";
+        wordString[3] = "four";
 
-//        String[] words = {"one","two","three","four","five","six","seven","eight","nine","ten"};
-
+//      创建一个字符串类型数组列表并存储到变量words中
         ArrayList<String> words = new ArrayList<String>();
 
         // initialize first element
@@ -32,20 +41,20 @@ public class NumbersActivity extends AppCompatActivity {
         words.add("nine");
         words.add("ten");
 
-        for(int i=0; i<10;i++){
-            Log.v("NumbersActivity", "word at index "+i+" "+words.get(i));
-        }
+//        LinearLayout rootView = findViewById(R.id.rootView);
+////        for loop
+//        for (int i = 0; i < 10; i++) {
+//            TextView wordView = new TextView(this);
+//            wordView.setText(words.get(i));
+//            rootView.addView(wordView);
+//        }
 
-//        ArrayList<String> restaurantsToTry = new ArrayList<String>();
-//
-//        restaurantsToTry.add("Morning Cafe");
-//        Log.i("ArrayList", "add Morning Cafe: "+restaurantsToTry);
-//        restaurantsToTry.add("BBQ Time");
-//        Log.i("ArrayList", "add BBQ Time: "+restaurantsToTry);
-////        restaurantsToTry.remove("Morning Cafe");
-//        restaurantsToTry.remove(0);
-//        Log.i("ArrayList", "remove Morning Cafe: "+restaurantsToTry);
-//        int numberOfRestaurants = restaurantsToTry.size();
-//        Log.i("ArrayList", "length: "+numberOfRestaurants);
+//        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, words);
+//        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, words);
+        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, words);
+//        ListView listView = findViewById(R.id.list);
+        ListView listView = (ListView) findViewById(R.id.list);
+//        listView.setAdapter(itemsAdapter);
+        listView.setAdapter(itemsAdapter);
     }
 }
