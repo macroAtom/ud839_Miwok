@@ -21,18 +21,21 @@ public class WordAdapter extends ArrayAdapter<Word> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+
+        View listItemView = convertView;
+        // Get the {@link Word} object located at this position in the list
         Word word = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
-        if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
+        if (listItemView == null) {
+            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
         }
         // Lookup view for data population
-        TextView miwokText = (TextView) convertView.findViewById(R.id.miwok_text_view);
-        TextView defaultText = (TextView) convertView.findViewById(R.id.default_text_view);
+        TextView miwokText = (TextView) listItemView.findViewById(R.id.miwok_text_view);
+        TextView defaultText = (TextView) listItemView.findViewById(R.id.default_text_view);
         // Populate the data into the template view using the data object
         defaultText.setText(word.getDefaultTranslation());
         miwokText.setText(word.getMiwokTranslation());
         // Return the completed view to render on screen
-        return convertView;
+        return listItemView;
     }
 }
