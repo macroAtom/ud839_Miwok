@@ -18,7 +18,7 @@ public class NumbersActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_numbers);
+        setContentView(R.layout.word_list);
 
 //     示例1: LinearLayout +ArrayList+ for循环方式布局到screen. 缺点:没有内存控制
 //        ArrayList<String> words = new ArrayList<String>();

@@ -12,24 +12,24 @@ public class FamilyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_family);
+        setContentView(R.layout.word_list);
 
 //        创建Family 类型的数组列表
-        ArrayList<Family> family = new ArrayList<Family>();
+        ArrayList<Word> family = new ArrayList<Word>();
 //      添加family 对象到Family数组列表中
-        family.add(new Family("father","әpә"));
-        family.add(new Family("mother","әṭa"));
-        family.add(new Family("son","angsi"));
-        family.add(new Family("daughter","tune"));
-        family.add(new Family("older brother","taachi"));
-        family.add(new Family("younger brother","chalitti"));
-        family.add(new Family("older sister","teṭe"));
-        family.add(new Family("younger sister","kolliti"));
-        family.add(new Family("grandmother","ama"));
-        family.add(new Family("grandfather","paapa"));
+        family.add(new Word("father","әpә"));
+        family.add(new Word("mother","әṭa"));
+        family.add(new Word("son","angsi"));
+        family.add(new Word("daughter","tune"));
+        family.add(new Word("older brother","taachi"));
+        family.add(new Word("younger brother","chalitti"));
+        family.add(new Word("older sister","teṭe"));
+        family.add(new Word("younger sister","kolliti"));
+        family.add(new Word("grandmother","ama"));
+        family.add(new Word("grandfather","paapa"));
 
 //      创建适配器,传入参数,this和数组列表(family类型)
-        FamilyAdapter familyAdapter = new FamilyAdapter(this,family);
+        WordAdapter familyAdapter = new WordAdapter(this,family);
 //      创建ListView 对象
         ListView listFamilyView = findViewById(R.id.list);
         listFamilyView.setAdapter(familyAdapter);
