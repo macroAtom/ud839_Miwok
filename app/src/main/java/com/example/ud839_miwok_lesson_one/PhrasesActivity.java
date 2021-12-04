@@ -2,6 +2,7 @@ package com.example.ud839_miwok_lesson_one;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ListView;
 
@@ -32,7 +33,7 @@ public class PhrasesActivity extends AppCompatActivity {
         phrases.add(new Word("Come here.", "әnni'nem"));
 
         // 创建phrases 的适配器对象,并填入当前的Activity,使用this参数,还需填入数据源对象phrases;
-        WordAdapter phrasesAdapter = new WordAdapter(this, phrases);
+        WordAdapter phrasesAdapter = new WordAdapter(this, phrases, R.color.category_phrases);
         ListView listView = findViewById(R.id.list);
         listView.setAdapter(phrasesAdapter);
 

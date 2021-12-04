@@ -2,8 +2,13 @@ package com.example.ud839_miwok_lesson_one;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -31,10 +36,9 @@ public class FamilyActivity extends AppCompatActivity {
         family.add(new Word(R.drawable.family_grandfather,"grandfather","paapa"));
 
 //      创建适配器,传入参数,this和数组列表(family类型)
-        WordAdapter familyAdapter = new WordAdapter(this,family);
+        WordAdapter familyAdapter = new WordAdapter(this,family,R.color.category_family);
 //      创建ListView 对象
         ListView listFamilyView = findViewById(R.id.list);
         listFamilyView.setAdapter(familyAdapter);
-
     }
 }

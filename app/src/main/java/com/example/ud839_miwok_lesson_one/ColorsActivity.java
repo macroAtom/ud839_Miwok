@@ -2,6 +2,7 @@ package com.example.ud839_miwok_lesson_one;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ListView;
 
@@ -31,7 +32,7 @@ public class ColorsActivity extends AppCompatActivity {
         color.add(new Word(R.drawable.color_mustard_yellow,"mustard yellow", "chiwiiṭә"));
 
 //        创建color 适配器对象,并填入参数this,和color 数据源
-        WordAdapter colorsAdapter = new WordAdapter(this, color);
+        WordAdapter colorsAdapter = new WordAdapter(this, color, R.color.category_colors);
         ListView listView = findViewById(R.id.list);
         listView.setAdapter(colorsAdapter);
     }

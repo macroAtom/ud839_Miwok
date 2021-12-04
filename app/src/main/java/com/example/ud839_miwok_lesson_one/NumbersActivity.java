@@ -2,6 +2,7 @@ package com.example.ud839_miwok_lesson_one;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -78,7 +79,7 @@ public class NumbersActivity extends AppCompatActivity {
 
 // 创建自定的适配器对象，参数为this(当前的NumberActivity，R.layout.list_time:数据要详细展示的layout，words:ArrayList<Word> 类型的对象)
 //        WordAdapter itemsAdapter = new WordAdapter(this, R.layout.list_item, words);
-        WordAdapter adapter = new WordAdapter(this, words);
+        WordAdapter adapter = new WordAdapter(this, words,R.color.category_numbers);
 //      从view hierarchy 中找到要布局的id,并存储为List 对象
         ListView listView = findViewById(R.id.list);
 //      展示到当前的Activity 布局页面上

@@ -1,23 +1,30 @@
 package com.example.ud839_miwok_lesson_one;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class WordAdapter extends ArrayAdapter<Word> {
-    public WordAdapter(@NonNull Context context,  @NonNull List<Word> objects) {
+
+    private int mColorResouceId;
+
+    public WordAdapter(@NonNull Context context,  @NonNull List<Word> objects, int color) {
         super(context, 0, objects);
+        this.mColorResouceId = color;
     }
 
     @NonNull
@@ -36,6 +43,16 @@ public class WordAdapter extends ArrayAdapter<Word> {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
         }
         // Lookup view for data population
+
+
+//        设置颜色方式1
+        LinearLayout li = listItemView.findViewById(R.id.text_container);
+//        li.setBackgroundResource(mColorResouceId);
+
+//        设置背景颜色方式2
+        int color = ContextCompat.getColor(getContext(),mColorResouceId);
+        li.setBackgroundColor(color);
+
 
         ImageView icon = listItemView.findViewById(R.id.image);
         TextView miwokText = (TextView) listItemView.findViewById(R.id.miwok_text_view);
