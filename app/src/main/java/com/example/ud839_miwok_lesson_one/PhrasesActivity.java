@@ -18,6 +18,8 @@ public class PhrasesActivity extends AppCompatActivity {
         ArrayList<Word> phrases = new ArrayList<Word>();
 
 //        添加Phrases 对象到 phrases的数据列表中
+//        phrases.add(new Word(R.drawable.one,"Where are you going?", "minto wuksus"));
+
         phrases.add(new Word("Where are you going?", "minto wuksus"));
         phrases.add(new Word("What is your name?", "tinnә oyaase'nә"));
         phrases.add(new Word("My name is...", "oyaaset..."));
