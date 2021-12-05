@@ -1,7 +1,10 @@
 package com.example.ud839_miwok_lesson_one;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
+import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -57,22 +61,46 @@ public class WordAdapter extends ArrayAdapter<Word> {
         ImageView icon = listItemView.findViewById(R.id.image);
         TextView miwokText = (TextView) listItemView.findViewById(R.id.miwok_text_view);
         TextView defaultText = (TextView) listItemView.findViewById(R.id.default_text_view);
-        // Populate the data into the template view using the data object
-//        if(word.getImageResourceId()==0){
-//           icon.setVisibility(View.GONE);
-//        }else {
-//            icon.setImageResource(word.getImageResourceId());
-//        }
 
+//      设置icon，如果有图片即显示，否则不可见图片空间
         if(word.hasImage()){
             icon.setImageResource(word.getImageResourceId());
             icon.setVisibility(View.VISIBLE);
         }else {
             icon.setVisibility(View.GONE);
         }
+//     set text 文本
 
-        defaultText.setText(word.getDefaultTranslation());
         miwokText.setText(word.getMiwokTranslation());
+        defaultText.setText(word.getDefaultTranslation());
+
+//      设置播放音频
+        //creating media player
+//        final MediaPlayer mp=new MediaPlayer();
+//        try{
+//            //you can change the path, here path is external directory(e.g. sdcard) /Music/maine.mp3
+//            Log.i("WordAdapter","setDataSource"+Environment.getExternalStorageDirectory().getPath()+"/bluetooth/karmin - i want it all.mp3");
+//            mp.setDataSource(Environment.getExternalStorageDirectory().getPath()+"/bluetooth/karmin - i want it all.mp3");
+//            mp.prepare();
+//        }catch(Exception e){e.printStackTrace();}
+//
+//        defaultText.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.i("WordAdapter","mp.start() start");
+//                mp.start();
+//                Log.i("WordAdapter","mp.start() end");
+//
+////                Toast.makeText(v.getContext(),"open the list of numbers", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//            public void onCompletion(MediaPlayer mMediaPlayer) {
+//                mMediaPlayer.release();
+//            }
+//        });
+
         // Return the completed view to render on screen
         return listItemView;
     }
