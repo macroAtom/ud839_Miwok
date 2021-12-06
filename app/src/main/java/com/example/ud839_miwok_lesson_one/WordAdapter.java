@@ -9,9 +9,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -74,7 +76,22 @@ public class WordAdapter extends ArrayAdapter<Word> {
         miwokText.setText(word.getMiwokTranslation());
         defaultText.setText(word.getDefaultTranslation());
 
-//      设置播放音频
+//        设置播放单词声音
+//        MediaPlayer mp = MediaPlayer.create(getContext(), word.getMiwokVoice());
+/**
+ * 方式1：点击miwok 单词播放声音
+ */
+//        miwokText.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                mp.start();
+//            }
+//        });
+/**
+ * 方式2：点击ListView 里的内容播放声音
+ */
+
+//      设置播放音频，通过外部文件播放
         //creating media player
 //        final MediaPlayer mp=new MediaPlayer();
 //        try{

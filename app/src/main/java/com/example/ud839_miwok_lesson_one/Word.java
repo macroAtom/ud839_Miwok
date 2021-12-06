@@ -1,6 +1,7 @@
 package com.example.ud839_miwok_lesson_one;
 
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.view.View;
 
 /**
@@ -10,11 +11,16 @@ import android.view.View;
 
 public class Word {
 
-    private int NO_IMAGE = -1;
+    /**
+     * store the word miwok voice
+     */
+
+    private int mMiwokVoice;
 
     /**
      * To store the resouce id
      */
+    private int NO_IMAGE = -1;
     private int mImageResourceId = NO_IMAGE;
 
 
@@ -36,10 +42,12 @@ public class Word {
      * @param defaultTranslation is the word in the local area language.
      * @param imageResourceId is the drawable resource id for the image associated the word
      */
-    public Word(int imageResourceId,String defaultTranslation,String miwokTranslation) {
+    public Word(int imageResourceId,String defaultTranslation,String miwokTranslation, int miwokVoice) {
         mImageResourceId = imageResourceId;
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
+        mMiwokVoice = miwokVoice;
+
     }
 
     /**
@@ -48,9 +56,10 @@ public class Word {
      * @param miwokTranslation
      * @param defaultTranslation
      */
-    public Word(String defaultTranslation,String miwokTranslation) {
+    public Word(String defaultTranslation,String miwokTranslation,int miwokVoice) {
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
+        mMiwokVoice = miwokVoice;
     }
 
 
@@ -87,4 +96,10 @@ public class Word {
         return mImageResourceId != NO_IMAGE;
     }
 
+    /**
+     * Get the miwok translation of the word
+     */
+    public int getMiwokVoice() {
+        return mMiwokVoice;
+    }
 }
