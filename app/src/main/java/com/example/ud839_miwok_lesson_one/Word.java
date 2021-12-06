@@ -102,4 +102,15 @@ public class Word {
     public int getMiwokVoice() {
         return mMiwokVoice;
     }
+
+    @Override
+    public String toString() {
+        return "Word{" +
+                "mMiwokVoice=" + mMiwokVoice +
+                ", NO_IMAGE=" + NO_IMAGE +
+                ", mImageResourceId=" + mImageResourceId +
+                ", mMiwokTranslation='" + mMiwokTranslation + '\'' +
+                ", mDefaultTranslation='" + mDefaultTranslation + '\'' +
+                '}';
+    }
 }
