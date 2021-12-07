@@ -2,7 +2,9 @@ package com.example.ud839_miwok_lesson_one;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.graphics.Color;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,9 +19,28 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class NumbersActivity extends AppCompatActivity {
     private MediaPlayer mMediaPlayer;
+
+    private AudioManager mAudioManager;
+
+    AudioManager.OnAudioFocusChangeListener mOnAudioFocusChangeListener =
+            new AudioManager.OnAudioFocusChangeListener() {
+                public void onAudioFocusChange(int focusChange) {
+                    if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
+                        releaseMediaPlayer();
+                    }
+                    else if (focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT || focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK) {
+                        // Pause playback
+                        mMediaPlayer.pause();
+                        mMediaPlayer.seekTo(0);
+                    } else if (focusChange == AudioManager.AUDIOFOCUS_GAIN) {
+                        mMediaPlayer.start();
+                    }
+                }
+            };
 
     private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener() {
         @Override
@@ -36,6 +57,7 @@ public class NumbersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_list);
 
+        mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 //     示例1: LinearLayout +ArrayList+ for循环方式布局到screen. 缺点:没有内存控制
 //        ArrayList<String> words = new ArrayList<String>();
 //        words.add("one");
@@ -108,18 +130,28 @@ public class NumbersActivity extends AppCompatActivity {
                 releaseMediaPlayer();
                 Word word = words.get(position);
                 Log.i("NumberActivity", "word: " + word);
-
                 Log.i("NumberActivity", "word.toString(): " + word.toString());
 
-                // Create and setup the {@link MediaPlayer} for the audio resource associated
-                // with the current word
-                mMediaPlayer = MediaPlayer.create(NumbersActivity.this, word.getMiwokVoice());
-                // Start the audio file
-                mMediaPlayer.start();
 
+                // Request audio focus for playback
+                int result = mAudioManager.requestAudioFocus(mOnAudioFocusChangeListener,
+                        // Use the music stream.
+                        AudioManager.STREAM_MUSIC,
+                        // Request permanent focus.
+                        AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
 
-//                当音频播放完成时调用
-                mMediaPlayer.setOnCompletionListener(mCompletionListener);
+                if(result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED){
+
+                    // Create and setup the {@link MediaPlayer} for the audio resource associated
+                    // with the current word
+                    mMediaPlayer = MediaPlayer.create(NumbersActivity.this, word.getMiwokVoice());
+                    // Start the audio file
+                    mMediaPlayer.start();
+                    /**
+                     * 当音频播放完成时调用
+                     */
+                    mMediaPlayer.setOnCompletionListener(mCompletionListener);
+                }
 
             }
         });
@@ -150,6 +182,8 @@ public class NumbersActivity extends AppCompatActivity {
             // setting the media player to null is an easy way to tell that the media player
             // is not configured to play an audio file at the moment.
             mMediaPlayer = null;
+
+            mAudioManager.abandonAudioFocus(mOnAudioFocusChangeListener);
         }
     }
 

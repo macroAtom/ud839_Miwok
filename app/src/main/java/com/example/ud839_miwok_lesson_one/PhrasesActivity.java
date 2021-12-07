@@ -2,7 +2,9 @@ package com.example.ud839_miwok_lesson_one;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.graphics.Color;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,9 +13,37 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class PhrasesActivity extends AppCompatActivity {
     private MediaPlayer mMediaPlayer;
+
+    private AudioManager mAudioManager;
+
+    /**
+     * 创建监听器对象
+     */
+
+    AudioManager.OnAudioFocusChangeListener mOnAudioFocusChangeListener =
+            new AudioManager.OnAudioFocusChangeListener() {
+                public void onAudioFocusChange(int focusChange) {
+                    if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
+                        // Permanent loss of audio focus
+                        // Pause playback immediately
+                        mMediaPlayer.release();
+                    }
+                    else if (focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT || focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK) {
+                        // Pause playback
+                        mMediaPlayer.pause();
+                        mMediaPlayer.seekTo(0);
+
+                    } else if (focusChange == AudioManager.AUDIOFOCUS_GAIN) {
+                        // Your app has been granted audio focus again
+                        // Raise volume to normal, restart playback if necessary
+                        mMediaPlayer.start();
+                    }
+                }
+            };
 
     private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener() {
         @Override
@@ -27,6 +57,8 @@ public class PhrasesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_list);
 
+
+        mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         ArrayList<Word> phrases = new ArrayList<Word>();
 
 //        添加Phrases 对象到 phrases的数据列表中
@@ -54,10 +86,22 @@ public class PhrasesActivity extends AppCompatActivity {
 
                 releaseMediaPlayer();
                 Word word = phrases.get(position);
-                mMediaPlayer = MediaPlayer.create(PhrasesActivity.this, word.getMiwokVoice());
-                mMediaPlayer.start();
-                //                当音频播放完成时调用
-                mMediaPlayer.setOnCompletionListener(mCompletionListener);
+
+
+                // Request audio focus for playback
+                int result = mAudioManager.requestAudioFocus(mOnAudioFocusChangeListener,
+                        // Use the music stream.
+                        AudioManager.STREAM_MUSIC,
+                        // Request permanent focus.
+                        AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
+
+                if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+                    mMediaPlayer = MediaPlayer.create(PhrasesActivity.this, word.getMiwokVoice());
+                    mMediaPlayer.start();
+                    //                当音频播放完成时调用
+                    mMediaPlayer.setOnCompletionListener(mCompletionListener);
+                }
+
             }
         });
 
@@ -86,6 +130,8 @@ public class PhrasesActivity extends AppCompatActivity {
             // setting the media player to null is an easy way to tell that the media player
             // is not configured to play an audio file at the moment.
             mMediaPlayer = null;
+
+            mAudioManager.abandonAudioFocus(mOnAudioFocusChangeListener);
         }
     }
 
