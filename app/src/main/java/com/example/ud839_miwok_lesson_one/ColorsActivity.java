@@ -113,12 +113,12 @@ public class ColorsActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Toast.makeText(ColorsActivity.this, "Destroy Resource!", Toast.LENGTH_SHORT).show();
-
-    }
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        Toast.makeText(ColorsActivity.this, "Destroy Resource!", Toast.LENGTH_SHORT).show();
+//
+//    }
 
     /**
      * Clean up the media player by releasing its resources.
