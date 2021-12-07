@@ -62,6 +62,15 @@ public class ColorsActivity extends AppCompatActivity {
     }
 
     /**
+     * when swatch app,stop the app
+     */
+    @Override
+    protected void onStop() {
+        super.onStop();
+        releaseMediaPlayer();
+    }
+
+    /**
      * Clean up the media player by releasing its resources.
      */
     private void releaseMediaPlayer() {
@@ -77,4 +86,5 @@ public class ColorsActivity extends AppCompatActivity {
             mMediaPlayer = null;
         }
     }
+
 }
