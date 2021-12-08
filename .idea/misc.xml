@@ -5,12 +5,16 @@
       <map>
         <entry key="..\:/App/Android/Projects/ud839_Miwok/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.265625" />
         <entry key="..\:/App/Android/Projects/ud839_Miwok/app/src/main/res/drawable/ic_launcher_background.xml" value="0.265625" />
+        <entry key="..\:/App/Android/Projects/ud839_Miwok/app/src/main/res/layout/activity_category.xml" value="0.22083333333333333" />
         <entry key="..\:/App/Android/Projects/ud839_Miwok/app/src/main/res/layout/activity_colors.xml" value="0.16302083333333334" />
         <entry key="..\:/App/Android/Projects/ud839_Miwok/app/src/main/res/layout/activity_family.xml" value="0.19010416666666666" />
         <entry key="..\:/App/Android/Projects/ud839_Miwok/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/App/Android/Projects/ud839_Miwok/app/src/main/res/layout/activity_main2.xml" value="0.196875" />
         <entry key="..\:/App/Android/Projects/ud839_Miwok/app/src/main/res/layout/activity_numbers.xml" value="0.2046875" />
         <entry key="..\:/App/Android/Projects/ud839_Miwok/app/src/main/res/layout/activity_phrases.xml" value="0.2046875" />
+        <entry key="..\:/App/Android/Projects/ud839_Miwok/app/src/main/res/layout/fragment_colors.xml" value="0.23541666666666666" />
+        <entry key="..\:/App/Android/Projects/ud839_Miwok/app/src/main/res/layout/fragment_numbers.xml" value="0.23541666666666666" />
+        <entry key="..\:/App/Android/Projects/ud839_Miwok/app/src/main/res/layout/fragment_phrases.xml" value="0.23541666666666666" />
         <entry key="..\:/App/Android/Projects/ud839_Miwok/app/src/main/res/layout/list_item.xml" value="0.1" />
         <entry key="..\:/App/Android/Projects/ud839_Miwok/app/src/main/res/layout/simple_list_item_1.xml" value="0.15989583333333332" />
         <entry key="..\:/App/Android/Projects/ud839_Miwok/app/src/main/res/layout/simple_list_item_2.xml" value="0.19010416666666666" />
