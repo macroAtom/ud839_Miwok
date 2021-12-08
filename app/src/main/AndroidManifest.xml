@@ -11,26 +11,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".NumbersActivity"
-            android:exported="false"
-            android:label="@string/category_numbers"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".FamilyActivity"
-            android:exported="false"
-            android:label="@string/category_family"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".ColorsActivity"
-            android:exported="false"
-            android:label="@string/category_colors"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".PhrasesActivity"
-            android:exported="false"
-            android:label="@string/category_phrases"
-            android:parentActivityName=".MainActivity" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
