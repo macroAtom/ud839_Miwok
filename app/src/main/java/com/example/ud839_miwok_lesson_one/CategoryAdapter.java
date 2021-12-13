@@ -32,7 +32,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
  */
 public class CategoryAdapter extends FragmentPagerAdapter {
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3, R.string.tab_text_4};
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_numbers, R.string.tab_family, R.string.tab_colors, R.string.tab_phrases};
 
     private final Context mContext;
 
